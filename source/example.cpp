@@ -4,6 +4,17 @@
 #include <cmath>
 
 
+#include "window.hpp"
+#include "rectangel.hpp"
+#include "circel.hpp"
+#include "vec2.hpp"
+#include "color.hpp"
+
+#include <GLFW/glfw3.h>
+#include <utility>
+#include <cmath>
+
+
 int main(int argc, char* argv[])
 {
   Window win{std::make_pair(800,800)};
@@ -47,6 +58,25 @@ int main(int argc, char* argv[])
     std::string text = "mouse position: (" + std::to_string(m.first) + ", " + std::to_string(m.second) + ")";
     win.draw_text(10, 5, 35.0f, text);
 
+
+    // Draw Rectangle
+    Rectangle square{Vec2 {20.0f,400.0f}, 
+                    Vec2 {200.0f,200.0f}, 
+                    Color {0.5f,0.5f,0.5f}};
+
+    square.draw(win);
+
+    // Draw Circle
+
+    Circle circle{
+      Vec2 {400.0f, 400.0f},
+      200.0f,
+      Color {1.0f, 0.0f, 0.0f}
+    };
+
+    circle.draw(win);
+
+    // Update Window
     win.update();
   }
 
